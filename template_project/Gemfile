@@ -9,3 +9,6 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem "nanoc", "~> 4.12"
 
 gem "adsf", "~> 1.4"
+
+gem "asciidoctor", "~> 2.0"
+gem "kramdown", "~> 2.3"
