@@ -2,6 +2,7 @@ module.exports = {
     purge: [
         './layouts/**/*.html',
         './content/**/*.html',
+        './content/**/*.erb',
         './content/**/*.md',
         './content/**/*.adoc'
     ],
