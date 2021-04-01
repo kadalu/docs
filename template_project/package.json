@@ -1,0 +1,17 @@
+{
+  "name": "template_project",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build:css": "postcss ./layouts/tailwind.css -o content/stylesheet.css",
+    "prod:css": "NODE_ENV=production postcss ./layouts/tailwind.css -o content/stylesheet.css"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.9",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.4"
+  }
+}
