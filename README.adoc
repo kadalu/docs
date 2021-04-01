@@ -1,0 +1,3 @@
+= Kadalu Documentation generation tool
+
+A tool to aggregate the doc files from multiple projects and generate Static documentation website.
