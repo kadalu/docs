@@ -1,3 +1,38 @@
 = Kadalu Documentation generation tool
 
 A tool to aggregate the doc files from multiple projects and generate Static documentation website.
+
+Create a `projects.yaml` file as below
+
+[source,yaml]
+----
+---
+- name: kadalu-k8s
+  title: Kadalu Kubernetes Storage
+  description: GlusterFS based persistent Storage solution for the apps running in Kubernetes.
+  repo: https://github.com/kadalu/kadalu
+  docs_dir: doc
+- name: kadalu-storage
+  title: Kadalu Storage
+  description: Opinionated GlusterFS distribution with external control plane.
+  repo: https://github.com/kadalu/moana
+  docs_dir: doc
+----
+
+Now run,
+
+----
+./bin/kadalu-docgen projects.yaml
+----
+
+Above command will generate a `output` directory that can be pushed to any Static file server.
+
+== How it works?
+
+The tool clones each repo specified in projects.yaml file and checkouts all the required branches and tags. Respective docs directory from each project will be copied to workdir and then https://nanoc.ws[nanoc] will generate the Static site.
+
+* Clone the docgen repo and copy the `template_project` directory.
+* Clone the project repository.
+* Checkout each version as specified in the projects.yaml file.
+* Copy the docs directory from the project to `<template-nanoc-project>/content/<project-name>/<version>`
+* Once all the docs are copied, run `bundle exec nanoc`
