@@ -10,6 +10,24 @@ compile '/**/*.html' do
   end
 end
 
+compile '/**/index.erb' do
+  filter :erb
+  layout '/plain.*'
+
+  write item.identifier.without_ext + '.html'
+end
+
+compile '/**/*.erb' do
+  filter :erb
+  layout '/default.*'
+
+  if item.identifier =~ '**/index.*'
+    write item.identifier.to_s
+  else
+    write item.identifier.without_ext + '/index.html'
+  end
+end
+
 compile '/**/*.md' do
   filter :kramdown
   layout '/default.*'

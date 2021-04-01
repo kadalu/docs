@@ -3,3 +3,5 @@ output
 tmp
 node_modules
 content/stylesheet.css
+lib/projects.yaml
+crash.log
