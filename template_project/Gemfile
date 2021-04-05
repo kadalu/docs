@@ -14,3 +14,5 @@ gem "asciidoctor", "~> 2.0"
 gem "kramdown", "~> 2.3"
 
 gem "adsf-live", "~> 1.4"
+
+gem "rouge", "~> 3.26"

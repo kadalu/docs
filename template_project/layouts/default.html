@@ -4,11 +4,39 @@
         <meta charset="utf-8">
         <title>Kadalu - <%= @item[:title] %></title>
         <link rel="stylesheet" href="/stylesheet.css">
+        <link rel="stylesheet" href="/pygment-emacs-highlight.css">
         <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>">
     </head>
     <body>
-        <div id="main" class="w-3/4 mx-auto">
-            <%= yield %>
+        <div class="grid grid-cols-12 w-full">
+            <div class="col-span-3 bg-gray-100">
+                <div class="py-5 px-5">
+                    <div class="p-5 bg-gray-200 text-right">
+                        <strong>Version: </strong><select>
+                            <% supported_versions("kadalu-k8s").each do |version| %>
+                            <option><%= version %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                    <% sidemenu("sample", 1).each do |section| %>
+                    <h2 class="text-xl font-semibold mt-7"><%= section["section"] %></h2>
+                    <ul>
+                        <% section["chapters"].each do |chapter| %>
+                        <li><a href="<%= link_from_title("sample", 1, chapter["title"]) %>"><%= chapter["title"] %></a></li>
+                        <% end %>
+                    </ul>
+                    <% end %>
+                </div>
+            </div>
+            <div id="main" class="col-span-9 prose max-w-none">
+                <div class="py-5 px-10">
+                    <div class="">
+                        <svg class="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                        <span class="inline-block font-semibold">/kadalu/0.8.0/storage-classes</span>
+                    </div>
+                    <%= yield %>
+                </div>
+            </div>
         </div>
     </body>
 </html>
