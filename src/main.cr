@@ -18,6 +18,10 @@ def prepare_versioned_docs(project, version)
   # TODO: Replace Relative links, *.md links and *.adoc links
 
   `cp -r #{ENV["ROOT_DIR"]}/tmpdocs/#{project.name}/#{project.docs_dir} #{ENV["ROOT_DIR"]}/tmpdocs/project/content/#{project.name}/#{version}`
+
+  version_dir = "#{ENV["ROOT_DIR"]}/tmpdocs/project/content/#{project.name}/#{version}"
+  # Create empty redirect.html file
+  `echo > #{version_dir}/redirect.html`
 end
 
 def init_rootdirs

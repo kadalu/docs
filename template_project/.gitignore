@@ -6,6 +6,6 @@ content/stylesheet.css
 lib/projects.yaml
 content/
 !content/index.erb
-!content/pygment-emacs-highlight.css
-!content/stylesheet.css
+!content/static/css/pygment-emacs-highlight.css
+!content/static/css/stylesheet.css
 crash.log

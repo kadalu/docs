@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>Kadalu - <%= @item[:title] %></title>
-        <link rel="stylesheet" href="/stylesheet.css">
-        <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>">
+        <%= render '/seo.html' %>
+        <%= render '/head.html' %>
     </head>
     <body>
+        <%= render '/header_menu.html' %>
         <div id="main">
             <%= yield %>
         </div>
+        <%= render '/footer.html' %>
     </body>
 </html>

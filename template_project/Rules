@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+compile '/**/versions.html' do
+  filter :erb
+  layout '/versions.*'
+
+  write item.identifier.without_ext.gsub('/versions', '') + '/index.html'
+end
+
 compile '/**/*.html' do
   layout '/default.*'
 
@@ -12,9 +19,15 @@ end
 
 compile '/**/index.erb' do
   filter :erb
-  layout '/plain.*'
+  layout '/projects.*'
 
   write item.identifier.without_ext + '.html'
+end
+
+compile '/**/*.json.erb' do
+  filter :erb
+
+  write item.identifier.without_ext
 end
 
 compile '/**/*.erb' do
@@ -39,6 +52,12 @@ compile '/**/*.md' do
   end
 end
 
+compile '/**/redirect.html' do
+  layout '/redirect.*'
+
+  write item.identifier.without_ext.gsub("redirect", "") + 'index.html'
+end
+
 compile '/**/*.adoc' do
   filter :asciidoctor, :header_footer => true, :attributes => [
            'last-update-label!=', # Do not show last updated label in every page
@@ -48,7 +67,7 @@ compile '/**/*.adoc' do
   layout '/default.*'
 
   if item.identifier =~ '**/index.*'
-    write item.identifier.to_s
+    write item.identifier.without_ext + '.html'
   else
     write item.identifier.without_ext + '/index.html'
   end

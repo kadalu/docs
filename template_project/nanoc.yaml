@@ -9,3 +9,9 @@ prune:
 data_sources:
   - type: filesystem
     encoding: utf-8
+
+environments:
+  default:
+    prefix_path: ""
+  prod:
+    prefix_path: "/docs"

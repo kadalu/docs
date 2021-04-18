@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build:css": "postcss ./layouts/tailwind.css -o content/stylesheet.css",
-    "prod:css": "NODE_ENV=production postcss ./layouts/tailwind.css -o content/stylesheet.css"
+    "build:css": "postcss ./layouts/tailwind.css -o content/static/css/stylesheet.css",
+    "prod:css": "NODE_ENV=production postcss ./layouts/tailwind.css -o content/static/css/stylesheet.css"
   },
   "author": "",
   "license": "Apache-2.0",
