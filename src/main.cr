@@ -43,7 +43,7 @@ def init_rootdirs
   `cp -r template_project #{ENV["ROOT_DIR"]}/tmpdocs/project`
 
   # Copy projects.yml to root dir
-  `cp #{ARGV[0]} #{ENV["ROOT_DIR"]}/tmpdocs/project/`
+  `cp #{ARGV[0]} #{ENV["ROOT_DIR"]}/tmpdocs/project/content/`
 end
 
 def clone_project(project)
@@ -56,7 +56,8 @@ def build_docs_site
   `cd #{ENV["ROOT_DIR"]}/tmpdocs/project && bundle install`
   `cd #{ENV["ROOT_DIR"]}/tmpdocs/project && npm install`
   `cd #{ENV["ROOT_DIR"]}/tmpdocs/project && npm run prod:css`
-  `cd #{ENV["ROOT_DIR"]}/tmpdocs/project && bundle exec nanoc`
+  `cd #{ENV["ROOT_DIR"]}/tmpdocs/project && bundle exec nanoc compile --env prod`
+  `mv #{ENV["ROOT_DIR"]}/tmpdocs/project/output ./output`
 end
 
 def build(projects)

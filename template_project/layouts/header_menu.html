@@ -4,7 +4,7 @@
     <div class="w-full px-5 m-auto py-5">
         <div class="lg:grid lg:grid-cols-12" x-data="{ menuOpen : false }">
             <div class="col-span-4 lg:col-span-2" style="height:40px">
-                <a href="/"><img src="/static/css/logo.png" class="h-10 float-left" /></a>
+                <a href="/"><img src="<%= @config[:prefix_path] %>/static/css/logo.png" class="h-10 float-left" /></a>
                 <button @click="menuOpen = !menuOpen" class="block absolute md:hidden right-7 top-5 w-8 h-8 text-gray-200 p-1">
                     <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
                 </button>
@@ -18,7 +18,7 @@
                     <a href="/opensource" class="<% if @item.path == "/opensource/" %><%= selected_cls %><% else %><%= cls %><% end %>">Open Source</a>
                     <a href="/services" class="<% if @item.path == "/services/" %><%= selected_cls %><% else %><%= cls %><% end %>">Services</a>
                     <a href="/products" class="<% if @item.path == "/products/" %><%= selected_cls %><% else %><%= cls %><% end %>">Products</a>
-                    <a href="/docs" class="<% if @item.path == "/docs/" %><%= selected_cls %><% else %><%= cls %><% end %>">Docs</a>
+                    <a href="/docs" class="<%= selected_cls %>">Docs</a>
                 </nav>
             </div>
         </div>
