@@ -15,18 +15,35 @@ def prepare_versioned_docs(project, version)
   `cd #{ENV["ROOT_DIR"]}/tmpdocs/#{project.name} && git checkout -b v#{version} #{version}`
   Dir.mkdir_p("#{ENV["ROOT_DIR"]}/tmpdocs/project/content/#{project.name}")
 
-  # TODO: Replace Relative links, *.md links and *.adoc links
+  project_dir = "#{ENV["ROOT_DIR"]}/tmpdocs/project/content/#{project.name}"
+  version_dir = "#{project_dir}/#{version}"
+  # Copy the docs directory to respective version directory
+  `cp -r #{ENV["ROOT_DIR"]}/tmpdocs/#{project.name}/#{project.docs_dir} #{version_dir}`
 
-  `cp -r #{ENV["ROOT_DIR"]}/tmpdocs/#{project.name}/#{project.docs_dir} #{ENV["ROOT_DIR"]}/tmpdocs/project/content/#{project.name}/#{version}`
+  # Create empty versions.html file in project root dir
+  `echo > #{project_dir}/versions.html`
 
-  version_dir = "#{ENV["ROOT_DIR"]}/tmpdocs/project/content/#{project.name}/#{version}"
   # Create empty redirect.html file
   `echo > #{version_dir}/redirect.html`
+
+  # Replace Relative links, *.adoc links
+  files = Dir.glob("#{version_dir}/*.adoc")
+  files.each do |adoc_file|
+    content = File.read(adoc_file)
+    content = content
+              .gsub(".adoc[", "[")
+              .gsub("link:../", "https://github.com/kadalu/#{project.name}/tree/#{version}/")
+              .gsub("link:./", "/docs/#{project.name}/#{version}/")
+    File.write(adoc_file, content)
+  end
 end
 
 def init_rootdirs
   Dir.mkdir_p("#{ENV["ROOT_DIR"]}/tmpdocs")
   `cp -r template_project #{ENV["ROOT_DIR"]}/tmpdocs/project`
+
+  # Copy projects.yml to root dir
+  `cp #{ARGV[0]} #{ENV["ROOT_DIR"]}/tmpdocs/project/`
 end
 
 def clone_project(project)

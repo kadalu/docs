@@ -7,6 +7,12 @@ compile '/**/versions.html' do
   write item.identifier.without_ext.gsub('/versions', '') + '/index.html'
 end
 
+compile '/**/redirect.html' do
+  layout '/redirect.*'
+
+  write item.identifier.without_ext.gsub("redirect", "") + 'index.html'
+end
+
 compile '/**/*.html' do
   layout '/default.*'
 
@@ -50,12 +56,6 @@ compile '/**/*.md' do
   else
     write item.identifier.without_ext + '/index.html'
   end
-end
-
-compile '/**/redirect.html' do
-  layout '/redirect.*'
-
-  write item.identifier.without_ext.gsub("redirect", "") + 'index.html'
 end
 
 compile '/**/*.adoc' do

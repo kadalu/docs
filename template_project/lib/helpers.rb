@@ -4,7 +4,7 @@ use_helper Nanoc::Helpers::Blogging
 use_helper Nanoc::Helpers::Rendering
 
 def link_from_title(project, version, title)
-  "/#{project}/#{version}/#{title.gsub(/\s/, "-").downcase}"
+  "/#{project}/#{version}/#{title.gsub(/\s/, "-").downcase}/"
 end
 
 def sidemenu(project, version)
