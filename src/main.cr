@@ -33,7 +33,7 @@ def prepare_versioned_docs(project, version)
     content = content
               .gsub(".adoc[", "[")
               .gsub("link:../", "https://github.com/kadalu/#{project.name}/tree/#{version}/")
-              .gsub("link:./", "/docs/#{project.name}/#{version}/")
+              .gsub("link:./", "link:/docs/#{project.name}/#{version}/")
     File.write(adoc_file, content)
   end
 end
