@@ -4,8 +4,7 @@ tmp
 node_modules
 content/stylesheet.css
 lib/projects.yaml
-content/
+content/*
 !content/index.erb
-!content/static/css/pygment-emacs-highlight.css
-!content/static/css/stylesheet.css
+!content/static
 crash.log
