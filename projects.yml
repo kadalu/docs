@@ -1,8 +1,8 @@
-- name: kadalu-k8s
+- name: k8s-storage
   title: Kubernetes Native Storage
   description: Kadalu Storage for the apps running in Kubernetes
   repo: https://github.com/kadalu/kadalu
-  versions: ["devel", "0.8.0"]
+  versions: ["devel"]
   docs_dir: "doc"
 # - name: glusterfs
 #   description: GlusterFS
